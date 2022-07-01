@@ -4,12 +4,12 @@ import { render, screen } from '~/test/utils';
 
 import App from './app.component';
 
-describe('Footer', () => {
-  it('should render the footer', () => {
+describe('App', () => {
+  it('should render the whole app', () => {
     render(<App />);
 
     expect(
-      screen.getByRole('link', { name: /learn react/i }),
+      screen.getByRole('heading', { name: /main content/i }),
     ).toBeInTheDocument();
   });
 });
