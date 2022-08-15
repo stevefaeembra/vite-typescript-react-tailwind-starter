@@ -1,3 +1,17 @@
+import React from 'react';
+
+// import { BrowserRouter } from 'react-router-dom';
+
+import 'tailwindcss/tailwind.css';
+
+// export const decorators = [
+//   (Story, context) => (
+//     <BrowserRouter>
+//       <Story {...context} />
+//     </BrowserRouter>
+//   ),
+// ];
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
