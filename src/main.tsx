@@ -9,3 +9,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 );
+
+// Don't use MSW when docker running, only during local development.
+if (import.meta.env.VITE_USE_MSW) {
+  const { worker } = await import('~/mocks/browser');
+  worker.start();
+}
