@@ -31,6 +31,11 @@ body {
   color: var(--color-text-primary);
 }
 
+.btn-primary {
+  background-color: var(--color-text-secondary);
+  color: var(--color-bg-secondary);
+}
+
 .header {
   background-color: var(--color-bg-secondary);
   color: var(--color-text-accent);
