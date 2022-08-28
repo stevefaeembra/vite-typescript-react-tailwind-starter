@@ -1,15 +1,13 @@
-import React from 'react';
-
-import { useState } from 'react';
+import React, { FC, ReactElement } from 'react';
 
 import Header from '~/layout/header.component';
 import Footer from '~/layout/footer.component';
 
-const App = () => (
-  <div className="flex flex-col min-h-screen">
+const App: FC = (): ReactElement => (
+  <div className="flex min-h-screen flex-col">
     <Header />
 
-    <main className="flex-grow">
+    <main className="grow">
       <h2>Main Content</h2>
     </main>
 
