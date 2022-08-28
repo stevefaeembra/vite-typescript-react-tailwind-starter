@@ -1,13 +1,17 @@
-import React from 'react';
+import { ReactElement } from 'react';
 
 import { cleanup, render } from '@testing-library/react';
 import { afterEach } from 'vitest';
+import { RenderOptions } from '@storybook/addons';
 
 afterEach(() => {
   cleanup();
 });
 
-const customRender = (ui: React.ReactElement, options = {}) =>
+const customRender = (
+  ui: ReactElement,
+  options?: Omit<RenderOptions, 'wrapper'>,
+) =>
   render(ui, {
     // wrap provider(s) here if needed
     wrapper: ({ children }) => children,
