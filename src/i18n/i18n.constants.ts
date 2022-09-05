@@ -1,9 +1,19 @@
+import { FC } from 'react';
+
 import * as english from './en/translation.json';
 import french from './fr/translation.json';
+import { FRIcon, FlagProps, GBIcon } from './icons';
 
-import { GBIcon, FRIcon } from './icons';
+interface LanguageLabel {
+  label: string;
+  icon: FC<FlagProps>;
+}
 
-export const LANGUAGES_LABELS = {
+interface LanguageRecord {
+  [key: string]: LanguageLabel;
+}
+
+export const LANGUAGES_LABELS: LanguageRecord = {
   en: {
     label: 'English',
     icon: GBIcon,

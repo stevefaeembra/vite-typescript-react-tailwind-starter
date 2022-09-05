@@ -8,7 +8,7 @@ import React from 'react';
  */
 
 export const useLocalStorageState = (
-  key,
+  key: string,
   defaultValue = '',
   { serialize = JSON.stringify, deserialize = JSON.parse } = {},
 ) => {
