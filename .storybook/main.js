@@ -14,6 +14,7 @@ module.exports = {
         },
       },
     },
+    'storybook-react-i18next',
   ],
   framework: '@storybook/react',
   core: {

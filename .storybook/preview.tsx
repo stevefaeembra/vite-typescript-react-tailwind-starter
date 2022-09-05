@@ -1,5 +1,6 @@
 import React from 'react';
 
+import i18n from '../src/i18n/i18n';
 // import { BrowserRouter } from 'react-router-dom';
 
 import 'tailwindcss/tailwind.css';
@@ -19,6 +20,12 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  i18n,
+  locale: 'en',
+  locales: {
+    en: { title: 'English', left: '🇬🇧' },
+    fr: { title: 'French', left: '🇫🇷' },
   },
 };
 
