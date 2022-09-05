@@ -1,15 +1,15 @@
-import React, { useEffect, FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
 import { useLocalStorageState } from '~/hooks/useLocalStorage';
 
-import { GBIcon, FRIcon } from './icons';
 import {
-  LANGUAGES_LABELS,
   DEFAULT_LANGUAGE,
+  LANGUAGES_LABELS,
   LANGUAGE_KEY,
 } from './i18n.constants';
+import { FRIcon, FlagProps, GBIcon } from './icons';
 
 interface Props {
   className?: string;
@@ -21,7 +21,7 @@ export const LanguageSwitcher: FC<Props> = ({ className }): ReactElement => {
     DEFAULT_LANGUAGE,
   );
 
-  const Icon = LANGUAGES_LABELS[language].icon;
+  const Icon: FC<FlagProps> = LANGUAGES_LABELS[language].icon;
 
   const { i18n } = useTranslation();
 

@@ -1,8 +1,9 @@
+/* eslint-disable import/export */
 import { ReactElement } from 'react';
 
+import { RenderOptions } from '@storybook/addons';
 import { cleanup, render } from '@testing-library/react';
 import { afterEach } from 'vitest';
-import { RenderOptions } from '@storybook/addons';
 
 afterEach(() => {
   cleanup();

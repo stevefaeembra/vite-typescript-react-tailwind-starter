@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 
-import Header from '~/layout/header.component';
 import Footer from '~/layout/footer.component';
+import Header from '~/layout/header.component';
 
 const App: FC = (): ReactElement => (
   <div className="flex min-h-screen flex-col">

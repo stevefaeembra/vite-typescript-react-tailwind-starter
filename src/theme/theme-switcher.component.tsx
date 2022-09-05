@@ -4,12 +4,11 @@ import { useLocalStorageState } from '~/hooks/useLocalStorage';
 
 import { MoonIcon } from './moon-icon.component';
 import { SunIcon } from './sun-icon.component';
-
 import {
-  LIGHT_LABEL,
-  DARK_LABEL,
   DARK,
+  DARK_LABEL,
   LIGHT,
+  LIGHT_LABEL,
   THEME_KEY,
 } from './theme.constants';
 
