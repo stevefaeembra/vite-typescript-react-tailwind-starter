@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, useEffect } from 'react';
 
-import { useLocalStorageState } from '~/hooks/useLocalStorage';
+import { useLocalStorage } from '@astrosat/react-utils';
 
 import { MoonIcon } from './moon-icon.component';
 import { SunIcon } from './sun-icon.component';
@@ -17,7 +17,7 @@ interface Props {
 }
 
 export const ThemeSwitcher: FC<Props> = ({ className }): ReactElement => {
-  const [theme, setTheme] = useLocalStorageState(THEME_KEY, DARK);
+  const [theme, setTheme] = useLocalStorage(THEME_KEY, DARK);
 
   const label = theme === DARK ? LIGHT_LABEL : DARK_LABEL;
 

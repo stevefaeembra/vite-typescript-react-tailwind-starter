@@ -1,8 +1,7 @@
 import React, { FC, ReactElement, useEffect } from 'react';
 
+import { useLocalStorage } from '@astrosat/react-utils';
 import { useTranslation } from 'react-i18next';
-
-import { useLocalStorageState } from '~/hooks/useLocalStorage';
 
 import {
   DEFAULT_LANGUAGE,
@@ -16,7 +15,7 @@ interface Props {
 }
 
 export const LanguageSwitcher: FC<Props> = ({ className }): ReactElement => {
-  const [language, setLanguage] = useLocalStorageState(
+  const [language, setLanguage] = useLocalStorage(
     LANGUAGE_KEY,
     DEFAULT_LANGUAGE,
   );
