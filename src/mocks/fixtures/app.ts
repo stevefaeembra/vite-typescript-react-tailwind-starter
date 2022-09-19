@@ -2,4 +2,4 @@ const config = {
   name: 'App Name',
 };
 
-export const getConfig = () => config;
+export const getConfig = (): { name: string } => config;

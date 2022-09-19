@@ -10,8 +10,6 @@ describe('App', () => {
   it('should render the whole app', () => {
     render(<App />);
 
-    expect(
-      screen.getByRole('heading', { name: /main content/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /main content/i })).toBeInTheDocument();
   });
 });

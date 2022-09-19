@@ -8,6 +8,9 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    target: 'ESNext',
+  },
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src'),
@@ -19,9 +22,7 @@ export default defineConfig({
     setupFiles: ['./setupTests.ts'],
     coverage: {
       reporter: ['text', 'json', 'html'],
+      exclude: ['node_modules/'],
     },
-  },
-  build: {
-    target: 'ESNext',
   },
 });
