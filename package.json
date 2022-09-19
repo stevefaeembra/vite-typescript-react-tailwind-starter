@@ -26,6 +26,9 @@
     "react-i18next": "^11.18.5"
   },
   "devDependencies": {
+    "@astrosat/eslint-config-astrosat": "^1.0.1",
+    "@astrosat/prettier-config": "^1.1.0",
+    "@astrosat/semantic-release-config": "^1.1.0",
     "@babel/core": "^7.18.13",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
