@@ -1,5 +1,6 @@
 import React from 'react';
 
+import axe from '@axe-core/react';
 import ReactDOM from 'react-dom/client';
 
 import App from './app.component';
@@ -14,6 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>,
 );
+
+if (import.meta.env.DEV) {
+  // const axe = require('@axe-core/react');
+  axe(React, ReactDOM, 1000);
+}
 
 // Don't use MSW when docker running, only during local development.
 if (import.meta.env.VITE_USE_MSW) {
