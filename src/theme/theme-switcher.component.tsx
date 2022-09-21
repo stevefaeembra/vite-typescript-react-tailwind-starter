@@ -4,13 +4,7 @@ import { useLocalStorage } from '@astrosat/react-utils';
 
 import { MoonIcon } from './moon-icon.component';
 import { SunIcon } from './sun-icon.component';
-import {
-  DARK,
-  DARK_LABEL,
-  LIGHT,
-  LIGHT_LABEL,
-  THEME_KEY,
-} from './theme.constants';
+import { DARK, DARK_LABEL, LIGHT, LIGHT_LABEL, THEME_KEY } from './theme.constants';
 
 interface Props {
   className?: string;
@@ -37,11 +31,7 @@ export const ThemeSwitcher: FC<Props> = ({ className }): ReactElement => {
       title={label}
       onClick={() => setTheme(theme === DARK ? LIGHT : DARK)}
     >
-      {theme === DARK ? (
-        <MoonIcon className="h-7 w-7" />
-      ) : (
-        <SunIcon className="h-7 w-7" />
-      )}
+      {theme === DARK ? <MoonIcon className="h-7 w-7" /> : <SunIcon className="h-7 w-7" />}
     </button>
   );
 };

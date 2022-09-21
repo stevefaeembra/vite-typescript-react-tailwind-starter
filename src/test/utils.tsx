@@ -9,10 +9,7 @@ afterEach(() => {
   cleanup();
 });
 
-const customRender = (
-  ui: ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>,
-) =>
+const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
   render(ui, {
     // wrap provider(s) here if needed
     wrapper: ({ children }) => children,

@@ -9,8 +9,6 @@ import Header from './header.component';
 describe('Header', () => {
   it('should render the header', () => {
     render(<Header />);
-    expect(
-      screen.getByRole('heading', { name: /hello user/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /hello user/i })).toBeInTheDocument();
   });
 });

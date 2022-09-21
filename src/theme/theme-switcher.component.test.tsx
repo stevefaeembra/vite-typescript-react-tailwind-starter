@@ -10,12 +10,8 @@ describe('Theme Switcher', () => {
   it('should default to dark mode', () => {
     render(<ThemeSwitcher />);
 
-    expect(
-      screen.getByRole('button', { name: /activate light mode/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.queryByRole('button', { name: /activate dark mode/i }),
-    ).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /activate light mode/i })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /activate dark mode/i })).not.toBeInTheDocument();
   });
 
   it('should switch from dark to light mode', async () => {
@@ -27,8 +23,6 @@ describe('Theme Switcher', () => {
     await userEvent.click(button);
 
     expect(screen.queryByRole(button)).not.toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /activate dark mode/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /activate dark mode/i })).toBeInTheDocument();
   });
 });

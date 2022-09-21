@@ -6,11 +6,7 @@ import { FlagProps } from '~/i18n/icons';
  * SVG itself comes from https://flagicons.lipis.dev/
  */
 export const FRIcon: FC<FlagProps> = ({ className }): ReactElement => (
-  <svg
-    className={className}
-    viewBox="0 0 640 480"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg className={className} viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
     <title>French Flag</title>
     <g fillRule="evenodd" strokeWidth="1pt">
       <path d="M0 0h640v480H0z" fill="#fff" />

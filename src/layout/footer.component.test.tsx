@@ -10,8 +10,6 @@ describe('Footer', () => {
   it('should render the footer', () => {
     render(<Footer />);
 
-    expect(
-      screen.getByRole('heading', { name: /footer/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /footer/i })).toBeInTheDocument();
   });
 });

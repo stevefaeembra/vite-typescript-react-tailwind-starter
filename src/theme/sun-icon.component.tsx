@@ -5,12 +5,7 @@ interface Props {
 }
 
 export const SunIcon: FC<Props> = ({ className }): ReactElement => (
-  <svg
-    className={className}
-    fill="currentColor"
-    viewBox="0 0 20 20"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg className={className} fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <title>Sun</title>
     <path
       clipRule="evenodd"
