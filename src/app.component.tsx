@@ -12,7 +12,9 @@ const App: FC = (): ReactElement => (
     <main className="grow">
       <h2>Main Content</h2>
 
-      <Button onClick={() => console.log('BUTTON CLICKED')}>Click Me</Button>
+      <Button onClick={() => console.log('BUTTON CLICKED')}>
+        <span>Click Me</span>
+      </Button>
     </main>
 
     <Footer />
