@@ -31,7 +31,7 @@ export const ThemeSwitcher: FC<Props> = ({ className }): ReactElement => {
       title={label}
       onClick={() => setTheme(theme === DARK ? LIGHT : DARK)}
     >
-      {theme === DARK ? <MoonIcon className="h-7 w-7" /> : <SunIcon className="h-7 w-7" />}
+      {theme === LIGHT ? <MoonIcon className="h-7 w-7" /> : <SunIcon className="h-7 w-7" />}
     </button>
   );
 };

@@ -2,8 +2,8 @@ import React, { FC, ReactElement } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { LanguageSwitcher } from '~/i18n/language-switcher.component';
-import { ThemeSwitcher } from '~/theme/theme-switcher.component';
+import { LanguageSwitcher } from '../i18n/language-switcher.component';
+import { ThemeSwitcher } from '../theme/theme-switcher.component';
 
 const Header: FC = (): ReactElement => {
   const { t } = useTranslation();
