@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite --open",
     "dev:local": "VITE_USE_MSW=true vite",
+    "backend": "node ./src/server/server.js",
     "test": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "cypress open",
