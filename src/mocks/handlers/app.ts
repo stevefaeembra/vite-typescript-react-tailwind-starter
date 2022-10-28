@@ -2,8 +2,11 @@ import { rest } from 'msw';
 
 import { getConfig } from '~/mocks/fixtures/app';
 
-const getAppConfig = rest.get('*/api/app/config', (req, res, ctx) => res(ctx.status(200), ctx.json(getConfig())));
+import { getBlogs } from '../fixtures/blogs';
 
-const handlers = [getAppConfig];
+const getAppConfig = rest.get('*/api/app/config', (req, res, ctx) => res(ctx.status(200), ctx.json(getConfig())));
+const getBlogList = rest.get('*/blogs', (req, res, ctx) => res(ctx.status(200), ctx.json(getBlogs())));
+
+const handlers = [getAppConfig, getBlogList];
 
 export default handlers;
