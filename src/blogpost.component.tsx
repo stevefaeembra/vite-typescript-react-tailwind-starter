@@ -1,10 +1,11 @@
 import { ReactElement } from 'react';
 
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const BlogPost: React.FC = (): ReactElement => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const {
     isLoading,
@@ -20,8 +21,7 @@ const BlogPost: React.FC = (): ReactElement => {
     return <h1>Error: {error.message}</h1>;
   }
   return (
-    <>
-      <hr />
+    <div className="w-1/2 border-2 border-red-600 p-4">
       <div>
         <h1>{post.title}</h1>
       </div>
@@ -31,7 +31,10 @@ const BlogPost: React.FC = (): ReactElement => {
       <div>
         <h3>{post.text}</h3>
       </div>
-    </>
+      <button className="button" onClick={() => navigate('/')}>
+        Go Back
+      </button>
+    </div>
   );
 };
 

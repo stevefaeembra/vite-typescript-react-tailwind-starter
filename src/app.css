@@ -37,6 +37,9 @@
   }
 }
 
-button {
+.button {
   font-size: calc(10px + 2vmin);
+  color: white;
+  background-color: #00f;
+  border: 1px solid red;
 }

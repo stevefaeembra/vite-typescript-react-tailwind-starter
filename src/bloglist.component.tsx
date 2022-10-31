@@ -24,7 +24,6 @@ const BlogList: FC = (): ReactElement => {
             <h1>{post.title}</h1>
           </Link>
           <div>{post.author}</div>
-          <hr />
         </div>
       ))}
     </div>
