@@ -14,7 +14,7 @@ const App: FC = (): ReactElement => {
     <div className="flex min-h-screen flex-col">
       <Header />
 
-      <main className="grow">
+      <main className="grid grow place-items-center">
         <QueryClientProvider client={queryClient}>
           <BlogList />
           <BlogPost uniqueID="1" />
