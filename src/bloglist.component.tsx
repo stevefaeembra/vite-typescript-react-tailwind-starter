@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
 import { IBlogPost } from './interfaces/interfaces';
 
@@ -19,8 +20,10 @@ const BlogList: FC = (): ReactElement => {
     <div>
       {data.map((post: IBlogPost) => (
         <div key={post.title}>
-          <h1>{post.title}</h1>
-          <span>{post.author}</span>
+          <Link to={`/blogs/${post.id}`}>
+            <h1>{post.title}</h1>
+          </Link>
+          <div>{post.author}</div>
           <hr />
         </div>
       ))}

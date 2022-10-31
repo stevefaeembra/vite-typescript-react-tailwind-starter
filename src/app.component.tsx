@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Route, Routes } from 'react-router-dom';
 
 import BlogList from './bloglist.component';
 import BlogPost from './blogpost.component';
@@ -16,8 +17,10 @@ const App: FC = (): ReactElement => {
 
       <main className="grid grow place-items-center">
         <QueryClientProvider client={queryClient}>
-          <BlogList />
-          <BlogPost uniqueID="1" />
+          <Routes>
+            <Route element={<BlogList />} path="/" />
+            <Route element={<BlogPost />} path="/blogs/:id" />
+          </Routes>
         </QueryClientProvider>
       </main>
 

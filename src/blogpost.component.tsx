@@ -1,22 +1,17 @@
 import { ReactElement } from 'react';
 
-import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
 
-import { IBlogPost } from './interfaces/interfaces';
+const BlogPost: React.FC = (): ReactElement => {
+  const { id } = useParams();
 
-interface Props {
-  uniqueID: string;
-}
-
-const BlogPost: React.FC<Props> = ({ uniqueID }): ReactElement => {
-  console.log('uniqueID', uniqueID);
   const {
     isLoading,
     isError,
     data: post,
     error,
-  } = useQuery(['getBlog', uniqueID], () => fetch(`/blogs/${uniqueID}`).then(res => res.json()));
+  } = useQuery(['getBlog', id], () => fetch(`/blogs/${id}`).then(res => res.json()));
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -38,10 +33,6 @@ const BlogPost: React.FC<Props> = ({ uniqueID }): ReactElement => {
       </div>
     </>
   );
-};
-
-BlogPost.propTypes = {
-  uniqueID: PropTypes.string.isRequired,
 };
 
 export default BlogPost;
