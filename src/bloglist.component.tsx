@@ -2,9 +2,10 @@ import { FC, ReactElement } from 'react';
 
 import { useQuery } from 'react-query';
 
+import { IBlogPost } from './interfaces/interfaces';
+
 const BlogList: FC = (): ReactElement => {
   const { isLoading, isError, data, error } = useQuery(['blogs'], () => fetch('/blogs').then(res => res.json()));
-  console.log('data', data);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -14,19 +15,17 @@ const BlogList: FC = (): ReactElement => {
     return <h1>Error: {error.message}</h1>;
   }
 
-  if (data) {
-    return (
-      <div>
-        {data.map(post => (
-          <>
-            <h1>{post.title}</h1>
-            <span>{post.author}</span>
-            <hr />
-          </>
-        ))}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {data.map((post: IBlogPost) => (
+        <div key={post.title}>
+          <h1>{post.title}</h1>
+          <span>{post.author}</span>
+          <hr />
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default BlogList;

@@ -3,6 +3,7 @@ import React, { FC, ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import BlogList from './bloglist.component';
+import BlogPost from './blogpost.component';
 import Footer from './layout/footer.component';
 import Header from './layout/header.component';
 
@@ -16,6 +17,7 @@ const App: FC = (): ReactElement => {
       <main className="grow">
         <QueryClientProvider client={queryClient}>
           <BlogList />
+          <BlogPost uniqueID="1" />
         </QueryClientProvider>
       </main>
 
