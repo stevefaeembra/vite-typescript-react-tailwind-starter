@@ -13,6 +13,7 @@ const BlogPost: React.FC = (): ReactElement => {
     data: post,
     error,
   } = useQuery(['getBlog', id], () => fetch(`/blogs/${id}`).then(res => res.json()));
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }

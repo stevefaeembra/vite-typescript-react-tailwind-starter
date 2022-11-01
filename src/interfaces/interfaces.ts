@@ -3,4 +3,5 @@ export interface IBlogPost {
   author: string;
   title: string;
   text: string;
+  postdate: string;
 }
