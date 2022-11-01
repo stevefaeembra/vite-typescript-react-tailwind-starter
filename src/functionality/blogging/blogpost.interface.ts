@@ -1,7 +1,7 @@
 export interface IBlogPost {
-  id: string;
-  author: string;
-  title: string;
-  text: string;
-  postdate: string;
+  id: string | null | undefined;
+  author: string | null | undefined;
+  title: string | null | undefined;
+  text: string | null | undefined;
+  postdate: string | null | undefined;
 }
