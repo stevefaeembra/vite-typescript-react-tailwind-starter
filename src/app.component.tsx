@@ -3,8 +3,8 @@ import React, { FC, ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Route, Routes } from 'react-router-dom';
 
-import BlogList from './components/bloglist.component';
-import BlogPost from './components/blogpost.component';
+import BlogList from './functionality/blogging/bloglist.component';
+import BlogPost from './functionality/blogging/blogpost.component';
 import Footer from './layout/footer.component';
 import Header from './layout/header.component';
 

@@ -1,4 +1,4 @@
-import { IBlogPost } from './../../interfaces/interfaces';
+import { IBlogPost } from '../../functionality/blogging/blogpost.interface';
 
 const BLOGS = [
   {
