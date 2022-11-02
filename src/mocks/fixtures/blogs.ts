@@ -39,3 +39,12 @@ const BLOGS = [
 ];
 
 export const getBlogs = (): IBlogPost[] => BLOGS;
+
+export const getPost = (id: string): IBlogPost | undefined => BLOGS.find(post => post.id === id);
+
+export const addPost = (post: IBlogPost) => {
+  const nextId = (BLOGS.length + 1).toString();
+  const newpost = { ...post, id: nextId };
+  BLOGS.push(newpost);
+  return newpost;
+};
