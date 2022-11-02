@@ -3,6 +3,7 @@ import React, { FC, ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Route, Routes } from 'react-router-dom';
 
+import NotFound from './components/notfound.component';
 import BlogList from './functionality/blogging/bloglist.component';
 import BlogPost from './functionality/blogging/blogpost.component';
 import CreateBlogPostForm from './functionality/blogging/createblogpost.component';
@@ -22,6 +23,7 @@ const App: FC = (): ReactElement => {
             <Route element={<BlogList />} path="/" />
             <Route element={<BlogPost />} path="/blogs/:id" />
             <Route element={<CreateBlogPostForm />} path="/blogs" />
+            <Route element={<NotFound />} path="*" />
           </Routes>
         </QueryClientProvider>
       </main>
