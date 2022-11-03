@@ -10,6 +10,7 @@ const BlogList: FC = (): ReactElement => {
   const { isLoading, isError, data, error } = usePosts();
 
   if (data) {
+    console.log('data', data);
     data.sort((a: IBlogPost, b: IBlogPost) => {
       new Date(a.postdate) > new Date(b.postdate) ? 1 : -1;
     });

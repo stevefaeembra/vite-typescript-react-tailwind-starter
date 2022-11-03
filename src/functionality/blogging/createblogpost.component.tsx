@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
 
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { IBlogPost } from './blogpost.interface';
+import useAddPost from './useCreatePost';
 
 const CreateBlogPostForm: FC = () => {
   const {
@@ -18,9 +20,12 @@ const CreateBlogPostForm: FC = () => {
     },
   });
 
-  const onSubmit = handleSubmit((data: unknown): IBlogPost | null => {
+  const navigate = useNavigate();
+  const { mutate } = useAddPost({ onSuccess: () => navigate('/') });
+
+  const onSubmit = handleSubmit((data: unknown) => {
     console.log('data', data);
-    return null;
+    mutate(data);
   });
 
   return (

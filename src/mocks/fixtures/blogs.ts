@@ -1,6 +1,6 @@
 import { IBlogPost } from '../../functionality/blogging/blogpost.interface';
 
-const BLOGS = [
+let BLOGS = [
   {
     id: '1',
     author: 'steven',

@@ -8,8 +8,9 @@ const getBlogPost = rest.get('*/blogs/:id', (req, res, ctx) =>
   res(ctx.status(200), ctx.json(getPost(req.params['id']))),
 );
 
-const addBlogPost = rest.post('*/blogs', (req, res, ctx) => {
-  const newPost = req.json;
+const addBlogPost = rest.post('*/blogs', async (req, res, ctx) => {
+  const newPost = await req.json();
+  console.log('form stuff', newPost);
   const newBlogList = addPost(newPost);
   return res(ctx.status(200), ctx.json(newBlogList));
 });
