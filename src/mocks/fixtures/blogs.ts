@@ -46,5 +46,5 @@ export const addPost = (post: IBlogPost) => {
   const nextId = (BLOGS.length + 1).toString();
   const newpost = { ...post, id: nextId };
   BLOGS.push(newpost);
-  return newpost;
+  return BLOGS;
 };

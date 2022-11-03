@@ -11,10 +11,10 @@ const CreateBlogPostForm: FC = () => {
     formState: { errors },
   } = useForm<IBlogPost>({
     defaultValues: {
-      title: null,
-      author: null,
-      postdate: null,
-      text: null,
+      title: '',
+      author: '',
+      postdate: '',
+      text: '',
     },
   });
 
@@ -51,7 +51,7 @@ const CreateBlogPostForm: FC = () => {
         ></input>
       </div>
       <div>
-        <label htmlFor="blogtext">Date Posted</label>
+        <label htmlFor="blogtext">Article</label>
         <textarea
           className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
           cols={80}

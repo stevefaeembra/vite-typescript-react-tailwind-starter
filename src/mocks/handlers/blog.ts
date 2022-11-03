@@ -10,8 +10,8 @@ const getBlogPost = rest.get('*/blogs/:id', (req, res, ctx) =>
 
 const addBlogPost = rest.post('*/blogs', (req, res, ctx) => {
   const newPost = req.json;
-  addPost(newPost);
-  return res(ctx.status(200), ctx.json(newPost));
+  const newBlogList = addPost(newPost);
+  return res(ctx.status(200), ctx.json(newBlogList));
 });
 
 const handlers = [getBlogList, getBlogPost, addBlogPost];
