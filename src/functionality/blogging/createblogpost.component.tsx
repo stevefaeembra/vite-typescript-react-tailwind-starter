@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { IBlogPost } from './blogpost.interface';
+import FieldError from '../../components/error.component';
+import { BlogPostSchema, IBlogPost } from './blogpost.interface';
 import useAddPost from './useCreatePost';
 
 const CreateBlogPostForm: FC = () => {
@@ -12,58 +14,73 @@ const CreateBlogPostForm: FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IBlogPost>({
+    resolver: zodResolver(BlogPostSchema),
     defaultValues: {
       title: '',
       author: '',
-      postdate: '',
+      postdate: new Date(),
       text: '',
     },
+    reValidateMode: 'onBlur',
   });
+
+  console.log('errors', errors);
 
   const navigate = useNavigate();
   const { mutate } = useAddPost({ onSuccess: () => navigate('/') });
 
-  const onSubmit = handleSubmit((data: unknown) => {
+  const onSubmit = handleSubmit((data: IBlogPost) => {
     console.log('data', data);
+    console.log('errors', errors);
     mutate(data);
   });
 
   return (
     <form className="m-4 flex flex-col md:container md:mx-auto" onSubmit={onSubmit}>
-      <div>
+      <>
         <label htmlFor="title">Blog title</label>
         <input
           className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
           id="title"
           {...register('title')}
         ></input>
+        {errors.title && <FieldError message={'Title is a Required field'} />}
+      </>
+      <div>
+        <>
+          <label htmlFor="author">Author</label>
+          <input
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+            id="author"
+            {...register('author')}
+          ></input>
+          {errors.author && <FieldError message={'Author is a Required field'} />}
+        </>
       </div>
       <div>
-        <label htmlFor="author">Author</label>
-        <input
-          className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
-          id="author"
-          {...register('author')}
-        ></input>
+        <>
+          <label htmlFor="postdate">Date Posted</label>
+          <input
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+            id="postdate"
+            type="datetime-local"
+            {...register('postdate')}
+          ></input>
+          {errors.postdate && <FieldError message={'Date is a Required field'} />}
+        </>
       </div>
       <div>
-        <label htmlFor="postdate">Date Posted</label>
-        <input
-          className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
-          id="postdate"
-          type="datetime-local"
-          {...register('postdate')}
-        ></input>
-      </div>
-      <div>
-        <label htmlFor="blogtext">Article</label>
-        <textarea
-          className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
-          cols={80}
-          id="blogtext"
-          rows={15}
-          {...register('text')}
-        ></textarea>
+        <>
+          <label htmlFor="text">Article</label>
+          <textarea
+            className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+            cols={80}
+            id="text"
+            rows={15}
+            {...register('text')}
+          ></textarea>
+          {errors.text && <FieldError message={'Article is a Required field'} />}
+        </>
       </div>
       <button aria-label="Add Item" className="m-2 rounded-md bg-sky-500 p-2 hover:bg-sky-800" type="submit">
         Save Post
