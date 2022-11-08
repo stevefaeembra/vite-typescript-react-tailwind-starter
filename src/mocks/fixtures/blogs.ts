@@ -48,3 +48,8 @@ export const addPost = (post: IBlogPost) => {
   BLOGS.push(newpost);
   return BLOGS;
 };
+
+export const deletePost = (id: string): IBlogPost[] => {
+  BLOGS = BLOGS.filter(post => post.id !== id);
+  return BLOGS;
+};

@@ -11,9 +11,13 @@ const Header: FC = (): ReactElement => {
 
   return (
     <header className="header flex justify-between p-10">
-      <h1 className="font-bold">{t('greeting')} User</h1>
+      <h1 className="font-bold">
+        <Link to="/">{t('greeting')} User</Link>
+      </h1>
       <nav>
-        <Link to="/blogs">Add new post</Link>
+        <Link to="/blogs">
+          <button>Add new post</button>
+        </Link>
       </nav>
       <span className="flex items-center justify-between">
         <ThemeSwitcher />

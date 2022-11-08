@@ -3,18 +3,18 @@ import { FC, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 
 import { IBlogPost } from './blogpost.interface';
+import useDeletePost from './useDeletePost';
 import usePosts from './usePosts';
 
 const BlogList: FC = (): ReactElement => {
   const { isLoading, isError, data, error } = usePosts();
+  const { mutate } = useDeletePost();
 
-  console.log('before sort');
   if (data) {
-    console.log('sorting');
     data.sort((a: IBlogPost, b: IBlogPost) => {
-      new Date(a.postdate) > new Date(b.postdate) ? 1 : -1;
+      //TODO : find why sorting not working
+      new Date(a.postdate).valueOf() - new Date(b.postdate).valueOf();
     });
-    console.log('after sort', data);
   }
 
   if (isLoading) {
@@ -34,6 +34,9 @@ const BlogList: FC = (): ReactElement => {
           </Link>
           <div>
             by {post.author}, {post.postdate}
+          </div>
+          <div>
+            <button onClick={() => mutate(post.id)}>Delete this post #{post.id}</button>
           </div>
         </div>
       ))}
