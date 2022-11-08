@@ -1,6 +1,5 @@
 import { FC, ReactElement } from 'react';
 
-import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 
 import { IBlogPost } from './blogpost.interface';
@@ -9,11 +8,13 @@ import usePosts from './usePosts';
 const BlogList: FC = (): ReactElement => {
   const { isLoading, isError, data, error } = usePosts();
 
+  console.log('before sort');
   if (data) {
-    console.log('data', data);
+    console.log('sorting');
     data.sort((a: IBlogPost, b: IBlogPost) => {
       new Date(a.postdate) > new Date(b.postdate) ? 1 : -1;
     });
+    console.log('after sort', data);
   }
 
   if (isLoading) {

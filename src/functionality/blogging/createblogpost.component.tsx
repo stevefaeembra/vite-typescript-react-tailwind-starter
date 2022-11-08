@@ -17,8 +17,8 @@ const CreateBlogPostForm: FC = () => {
     resolver: zodResolver(BlogPostSchema),
     defaultValues: {
       title: '',
-      author: '',
-      postdate: new Date(),
+      author: 'steven',
+      postdate: new Date().toUTCString(),
       text: '',
     },
     reValidateMode: 'onBlur',
@@ -51,6 +51,7 @@ const CreateBlogPostForm: FC = () => {
           <label htmlFor="author">Author</label>
           <input
             className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+            disabled={true}
             id="author"
             {...register('author')}
           ></input>
@@ -62,8 +63,9 @@ const CreateBlogPostForm: FC = () => {
           <label htmlFor="postdate">Date Posted</label>
           <input
             className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
+            disabled={true}
             id="postdate"
-            type="datetime-local"
+            type="text"
             {...register('postdate')}
           ></input>
           {errors.postdate && <FieldError message={'Date is a Required field'} />}
