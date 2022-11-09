@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { Route, Routes } from 'react-router-dom';
 
 import NotFound from './components/notfound.component';

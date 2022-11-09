@@ -13,4 +13,9 @@ const usePost = (id: string) => {
   return useQuery(['getBlog', id], () => getter(id));
 };
 
+export const usePostEdit = (id: string) => {
+  console.log('usePostEdit.id', id);
+  return useQuery(['getBlogForEdit', id], () => getter(id));
+};
+
 export default usePost;

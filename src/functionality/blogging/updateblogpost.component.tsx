@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import FieldError from '../../components/error.component';
 import { BlogPostSchema, IBlogPost } from './blogpost.interface';
-import usePost from './usePost';
+import usePostEdit from './usePost';
 import useUpdatePost from './useUpdatePost';
 
 const UpdateBlogPostForm: FC = () => {
@@ -14,7 +14,7 @@ const UpdateBlogPostForm: FC = () => {
   console.log('id', id);
 
   // TODO: find out why this returns undefined
-  const { isLoading, isError, data: existingPost, error } = usePost(id);
+  const { isLoading, isError, data: existingPost, error } = usePostEdit(id);
 
   console.log('existingPost', existingPost);
 

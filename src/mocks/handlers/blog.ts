@@ -6,6 +6,10 @@ const getBlogList = rest.get('*/blogs', (req, res, ctx) => res(ctx.status(200), 
 
 const getBlogPost = rest.get('*/blogs/:id', (req, res, ctx) => res(ctx.status(200), ctx.json(getPost(req.params.id))));
 
+const getBlogPostForEdit = rest.get('*/edit/:id', (req, res, ctx) =>
+  res(ctx.status(200), ctx.json(getPost(req.params.id))),
+);
+
 const addBlogPost = rest.post('*/blogs', async (req, res, ctx) => {
   const newPost = await req.json();
   const newBlogList = addPost(newPost);
@@ -25,6 +29,6 @@ const updateBlogPost = rest.patch('*/blogs/:id', async (req, res, ctx) => {
   return res(ctx.status(200), ctx.json(foo));
 });
 
-const handlers = [getBlogList, getBlogPost, addBlogPost, deleteBlogPost, updateBlogPost];
+const handlers = [getBlogList, getBlogPost, addBlogPost, deleteBlogPost, updateBlogPost, getBlogPostForEdit];
 
 export default handlers;
