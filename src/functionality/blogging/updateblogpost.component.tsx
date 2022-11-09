@@ -11,7 +11,12 @@ import useUpdatePost from './useUpdatePost';
 
 const UpdateBlogPostForm: FC = () => {
   const { id } = useParams();
-  const { data: existingPost } = usePost(id);
+  console.log('id', id);
+
+  // TODO: find out why this returns undefined
+  const { isLoading, isError, data: existingPost, error } = usePost(id);
+
+  console.log('existingPost', existingPost);
 
   const {
     register,
@@ -30,6 +35,14 @@ const UpdateBlogPostForm: FC = () => {
 
   const navigate = useNavigate();
   const { mutate: updateMutate } = useUpdatePost({ onSuccess: () => navigate('/') });
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
+  if (isError) {
+    return <h1>Error: {error.message}</h1>;
+  }
 
   const onSubmit = handleSubmit((data: IBlogPost) => {
     updateMutate(data);

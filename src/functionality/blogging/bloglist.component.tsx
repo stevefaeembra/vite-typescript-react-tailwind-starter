@@ -36,7 +36,7 @@ const BlogList: FC = (): ReactElement => {
             by {post.author}, {post.postdate}
           </div>
           <div>
-            <button onClick={() => deleteMutate(post.id)}>Delete</button> | <Link to="">Edit</Link>
+            <button onClick={() => deleteMutate(post.id)}>Delete</button> | <Link to={`/edit/${post.id}`}>Edit</Link>
           </div>
         </div>
       ))}

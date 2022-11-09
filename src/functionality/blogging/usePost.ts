@@ -1,8 +1,16 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-const usePost = (id: string | undefined) => {
-  return useQuery(['getBlog', id], () => axios.get(`/blogs/${id}`).then(res => res.data));
+const getter = (id: string) => {
+  return axios.get(`/blogs/${id}`).then(res => {
+    console.log('response', res);
+    return res.data;
+  });
+};
+
+const usePost = (id: string) => {
+  console.log('usePost.id', id);
+  return useQuery(['getBlog', id], () => getter(id));
 };
 
 export default usePost;
