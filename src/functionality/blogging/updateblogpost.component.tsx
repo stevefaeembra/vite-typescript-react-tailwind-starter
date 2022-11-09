@@ -2,13 +2,17 @@ import React, { FC } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import FieldError from '../../components/error.component';
 import { BlogPostSchema, IBlogPost } from './blogpost.interface';
-import useAddPost from './useCreatePost';
+import usePost from './usePost';
+import useUpdatePost from './useUpdatePost';
 
-const CreateBlogPostForm: FC = () => {
+const UpdateBlogPostForm: FC = () => {
+  const { id } = useParams();
+  const { data: existingPost } = usePost(id);
+
   const {
     register,
     handleSubmit,
@@ -16,21 +20,22 @@ const CreateBlogPostForm: FC = () => {
   } = useForm<IBlogPost>({
     resolver: zodResolver(BlogPostSchema),
     defaultValues: {
-      title: '',
-      author: 'steven',
+      title: existingPost.title,
+      author: existingPost.author,
       postdate: new Date().toUTCString(),
-      text: '',
+      text: existingPost.text,
     },
     reValidateMode: 'onBlur',
   });
 
   const navigate = useNavigate();
-  const { mutate: addMutate } = useAddPost({ onSuccess: () => navigate('/') });
+  const { mutate: updateMutate } = useUpdatePost({ onSuccess: () => navigate('/') });
 
   const onSubmit = handleSubmit((data: IBlogPost) => {
-    addMutate(data);
+    updateMutate(data);
   });
 
+  // TODO: the following is a copy and paste job, break into separate component?
   return (
     <form className="m-4 flex flex-col md:container md:mx-auto" onSubmit={onSubmit}>
       <>
@@ -87,4 +92,4 @@ const CreateBlogPostForm: FC = () => {
   );
 };
 
-export default CreateBlogPostForm;
+export default UpdateBlogPostForm;

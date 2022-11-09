@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-import { addPost, deletePost, getBlogs, getPost } from '../fixtures/blogs';
+import { addPost, deletePost, getBlogs, getPost, updatePost } from '../fixtures/blogs';
 
 const getBlogList = rest.get('*/blogs', (req, res, ctx) => res(ctx.status(200), ctx.json(getBlogs())));
 
@@ -14,10 +14,17 @@ const addBlogPost = rest.post('*/blogs', async (req, res, ctx) => {
 
 const deleteBlogPost = rest.delete('*/blogs/:id', async (req, res, ctx) => {
   console.log('req params', req.params);
-  const foo = deletePost(req.params.id);
+  const newBlogList = deletePost(req.params.id);
+  return res(ctx.status(200), ctx.json(newBlogList));
+});
+
+const updateBlogPost = rest.patch('*/blogs/:id', async (req, res, ctx) => {
+  console.log('req params', req.params);
+  const updatedPost = req.json();
+  const foo = updatePost(req.params.id, updatedPost);
   return res(ctx.status(200), ctx.json(foo));
 });
 
-const handlers = [getBlogList, getBlogPost, addBlogPost, deleteBlogPost];
+const handlers = [getBlogList, getBlogPost, addBlogPost, deleteBlogPost, updateBlogPost];
 
 export default handlers;

@@ -8,7 +8,7 @@ import usePosts from './usePosts';
 
 const BlogList: FC = (): ReactElement => {
   const { isLoading, isError, data, error } = usePosts();
-  const { mutate } = useDeletePost();
+  const { mutate: deleteMutate } = useDeletePost();
 
   if (data) {
     data.sort((a: IBlogPost, b: IBlogPost) => {
@@ -36,7 +36,7 @@ const BlogList: FC = (): ReactElement => {
             by {post.author}, {post.postdate}
           </div>
           <div>
-            <button onClick={() => mutate(post.id)}>Delete this post #{post.id}</button>
+            <button onClick={() => deleteMutate(post.id)}>Delete</button> | <Link to="">Edit</Link>
           </div>
         </div>
       ))}

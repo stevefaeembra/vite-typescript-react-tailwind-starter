@@ -7,6 +7,7 @@ import NotFound from './components/notfound.component';
 import BlogList from './functionality/blogging/bloglist.component';
 import BlogPost from './functionality/blogging/blogpost.component';
 import CreateBlogPostForm from './functionality/blogging/createblogpost.component';
+import UpdateBlogPostForm from './functionality/blogging/updateblogpost.component';
 import Footer from './layout/footer.component';
 import Header from './layout/header.component';
 
@@ -23,6 +24,7 @@ const App: FC = (): ReactElement => {
             <Route element={<BlogList />} path="/" />
             <Route element={<BlogPost />} path="/blogs/:id" />
             <Route element={<CreateBlogPostForm />} path="/blogs" />
+            <Route element={<UpdateBlogPostForm />} path="/edit/:id" />
             <Route element={<NotFound />} path="*" />
           </Routes>
         </QueryClientProvider>
