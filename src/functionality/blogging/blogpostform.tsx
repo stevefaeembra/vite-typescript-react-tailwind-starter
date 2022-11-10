@@ -5,12 +5,11 @@ import { useForm } from 'react-hook-form';
 
 import FieldError from '../../components/error.component';
 import { BlogPostSchema, IBlogPost } from './blogpost.interface';
-//import useUpdatePost from './useUpdatePost';
 
-const BlogPostForm: FC<IBlogPost> = (post, mutator: (post: IBlogPost) => void) => {
-  const formData = post.post;
+const BlogPostForm: FC = ({ post, mutator }) => {
+  const formData = post;
   console.log('Must have data and it is', formData);
-
+  console.log('mutator in BlogPostForm', mutator);
   const {
     register,
     handleSubmit,
@@ -26,14 +25,15 @@ const BlogPostForm: FC<IBlogPost> = (post, mutator: (post: IBlogPost) => void) =
     reValidateMode: 'onBlur',
   });
 
-  const onSubmit = handleSubmit((data: IBlogPost) => {
+  const onSubmit = (data: IBlogPost) => {
     console.log('submitting data', data);
+    console.log('mutator in onSubmit', mutator);
     mutator(data);
-  });
+  };
 
   // TODO: the following is a copy and paste job, break into separate component?
   return (
-    <form className="m-4 flex flex-col md:container md:mx-auto" onSubmit={onSubmit}>
+    <form className="m-4 flex flex-col md:container md:mx-auto" onSubmit={handleSubmit(onSubmit)}>
       <>
         <label htmlFor="title">Blog title</label>
         <input

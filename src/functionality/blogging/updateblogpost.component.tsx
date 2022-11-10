@@ -20,6 +20,7 @@ const UpdateBlogPostForm: FC = () => {
 
   const navigate = useNavigate();
   const { mutate: updateMutate } = useUpdatePost(() => navigate('/'));
+  console.log('mutator is', updateMutate);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -29,7 +30,6 @@ const UpdateBlogPostForm: FC = () => {
     return <h1>Error: {error.message}</h1>;
   }
 
-  // TODO: the following is a copy and paste job, break into separate component?
   return existingPost ? <BlogPostForm mutator={updateMutate} post={existingPost} /> : null;
 };
 
