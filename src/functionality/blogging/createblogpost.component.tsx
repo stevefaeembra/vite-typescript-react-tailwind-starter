@@ -25,7 +25,7 @@ const CreateBlogPostForm: FC = () => {
   });
 
   const navigate = useNavigate();
-  const { mutate: addMutate } = useAddPost({ onSuccess: () => navigate('/') });
+  const { mutate: addMutate } = useAddPost(() => navigate('/'));
 
   const onSubmit = handleSubmit((data: IBlogPost) => {
     addMutate(data);

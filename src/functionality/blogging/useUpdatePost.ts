@@ -7,7 +7,7 @@ const updatePost = (post: IBlogPost) => {
   return axios.patch(`/blogs/${post.id}`, post).then(res => res.data);
 };
 
-const useUpdatePost = ({onSuccess}) => {
+const useUpdatePost = (onSuccess: () => void) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (post: IBlogPost) => updatePost(post),

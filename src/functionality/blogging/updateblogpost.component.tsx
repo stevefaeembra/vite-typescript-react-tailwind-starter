@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import FieldError from '../../components/error.component';
 import { BlogPostSchema, IBlogPost } from './blogpost.interface';
-import usePostEdit from './usePost';
+import { usePostEdit } from './usePost';
 import useUpdatePost from './useUpdatePost';
 
 const UpdateBlogPostForm: FC = () => {
@@ -25,16 +25,21 @@ const UpdateBlogPostForm: FC = () => {
   } = useForm<IBlogPost>({
     resolver: zodResolver(BlogPostSchema),
     defaultValues: {
-      title: existingPost.title,
-      author: existingPost.author,
+      title: existingPost.title || '',
+      author: existingPost.author || '',
       postdate: new Date().toUTCString(),
-      text: existingPost.text,
+      text: existingPost.text || '',
     },
     reValidateMode: 'onBlur',
   });
 
+  const onSubmit = handleSubmit((data: IBlogPost) => {
+    console.log('submitting data', data);
+    updateMutate(data);
+  });
+
   const navigate = useNavigate();
-  const { mutate: updateMutate } = useUpdatePost({ onSuccess: () => navigate('/') });
+  const { mutate: updateMutate } = useUpdatePost(() => navigate('/'));
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -43,10 +48,6 @@ const UpdateBlogPostForm: FC = () => {
   if (isError) {
     return <h1>Error: {error.message}</h1>;
   }
-
-  const onSubmit = handleSubmit((data: IBlogPost) => {
-    updateMutate(data);
-  });
 
   // TODO: the following is a copy and paste job, break into separate component?
   return (
