@@ -28,6 +28,7 @@ const App: FC = (): ReactElement => {
             <Route element={<UpdateBlogPostForm />} path="/edit/:id" />
             <Route element={<NotFound />} path="*" />
           </Routes>
+          <ReactQueryDevtools />
         </QueryClientProvider>
       </main>
 
