@@ -17,13 +17,11 @@ const addBlogPost = rest.post('*/blogs', async (req, res, ctx) => {
 });
 
 const deleteBlogPost = rest.delete('*/blogs/:id', async (req, res, ctx) => {
-  console.log('req params', req.params);
   const newBlogList = deletePost(req.params.id);
   return res(ctx.status(200), ctx.json(newBlogList));
 });
 
 const updateBlogPost = rest.patch('*/blogs/:id', async (req, res, ctx) => {
-  console.log('req params', req.params);
   const updatedPost = req.json();
   const foo = updatePost(req.params.id, updatedPost);
   return res(ctx.status(200), ctx.json(foo));

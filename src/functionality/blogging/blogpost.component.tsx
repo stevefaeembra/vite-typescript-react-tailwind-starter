@@ -6,8 +6,6 @@ import usePost from './usePost';
 
 const BlogPost: React.FC = (): ReactElement => {
   const { id } = useParams();
-  console.log('blogpost id', id);
-  console.log('blogpost typeof', typeof id);
   const navigate = useNavigate();
 
   const { isLoading, isError, data: post, error } = usePost(id);

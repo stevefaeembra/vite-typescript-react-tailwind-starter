@@ -8,7 +8,6 @@ import useAddPost from './useCreatePost';
 const CreateBlogPostForm: FC = () => {
   const navigate = useNavigate();
   const { mutate: addMutate } = useAddPost(() => navigate('/'));
-  console.log('mutator is', addMutate);
 
   const existingPost = {
     id: null,

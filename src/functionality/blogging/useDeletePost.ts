@@ -9,7 +9,6 @@ const useDeletePost = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (id: string) => {
-      console.log('foo id', id);
       return deletePost(id);
     },
     onSuccess: () => {

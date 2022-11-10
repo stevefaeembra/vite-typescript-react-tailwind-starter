@@ -8,8 +8,6 @@ import { BlogPostSchema, IBlogPost } from './blogpost.interface';
 
 const BlogPostForm: FC = ({ post, mutator }) => {
   const formData = post;
-  console.log('Must have data and it is', formData);
-  console.log('mutator in BlogPostForm', mutator);
   const {
     register,
     handleSubmit,
@@ -26,8 +24,6 @@ const BlogPostForm: FC = ({ post, mutator }) => {
   });
 
   const onSubmit = (data: IBlogPost) => {
-    console.log('submitting data', data);
-    console.log('mutator in onSubmit', mutator);
     mutator(data);
   };
 
