@@ -54,9 +54,12 @@ export const deletePost = (id: string): IBlogPost[] => {
   return BLOGS;
 };
 
-export const updatePost = (id: string, post: IBlogPost) => {
-  deletePost(id);
-  const newpost = { ...post, id };
+export const updatePost = (post: IBlogPost) => {
+  console.log('updatePost received -->', post);
+  deletePost(post.id);
+  console.log('updatePost --> id', post.id);
+  console.log('updatePost --> post', post);
+  const newpost = { ...post, id: post.id };
   BLOGS.push(newpost);
   return BLOGS;
 };

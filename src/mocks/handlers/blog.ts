@@ -22,8 +22,8 @@ const deleteBlogPost = rest.delete('*/blogs/:id', async (req, res, ctx) => {
 });
 
 const updateBlogPost = rest.patch('*/blogs/:id', async (req, res, ctx) => {
-  const updatedPost = req.json();
-  const foo = updatePost(req.params.id, updatedPost);
+  const updatedPost = await req.json().then(data => data);
+  const foo = updatePost(updatedPost);
   return res(ctx.status(200), ctx.json(foo));
 });
 

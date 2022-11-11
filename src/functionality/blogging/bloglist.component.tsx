@@ -28,7 +28,7 @@ const BlogList: FC = (): ReactElement => {
   return (
     <div>
       {data.map((post: IBlogPost) => (
-        <div key={post.title}>
+        <div key={post.id}>
           <Link to={`/blogs/${post.id}`}>
             <h1>{post.title}</h1>
           </Link>

@@ -24,7 +24,12 @@ const BlogPostForm: FC = ({ post, mutator }) => {
   });
 
   const onSubmit = (data: IBlogPost) => {
-    mutator(data);
+    // console.log('data', data);
+    // console.log('formData', formData);
+    const submitForm = { ...data, id: formData.id };
+    console.log('submitting', JSON.stringify(submitForm));
+    // Id is not a field on the form so need to spread it in
+    mutator(submitForm);
   };
 
   // TODO: the following is a copy and paste job, break into separate component?
