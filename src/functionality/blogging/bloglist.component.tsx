@@ -12,9 +12,7 @@ const BlogList: FC = (): ReactElement => {
   const { mutate: deleteMutate } = useDeletePost();
 
   if (data) {
-    data.sort((a: IBlogPost, b: IBlogPost) => {
-      return new Date(a.postdate).valueOf() - new Date(b.postdate).valueOf();
-    });
+    data.sort((a: IBlogPost, b: IBlogPost) => new Date(a.postdate).valueOf() - new Date(b.postdate).valueOf());
   }
 
   if (isLoading) {
@@ -26,7 +24,7 @@ const BlogList: FC = (): ReactElement => {
   }
 
   return (
-    <div>
+    <div className={STYLES.centered}>
       {data.map((post: IBlogPost) => (
         <div key={post.id}>
           <Link to={`/blogs/${post.id}`}>

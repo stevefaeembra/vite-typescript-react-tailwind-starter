@@ -7,7 +7,7 @@ const addPost = (post: IBlogPost) => {
   return axios.post(`/blogs`, post).then(res => res.data);
 };
 
-const useCreatePost = onSuccess => {
+const useCreatePost = (onSuccess: () => void) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (post: IBlogPost) => addPost(post),

@@ -19,7 +19,7 @@ const BlogPost: React.FC = (): ReactElement => {
     return <h1>Error: {error.message}</h1>;
   }
   return (
-    <div className="w-1/2 border-2 border-red-600 p-4">
+    <div className={STYLES.centered}>
       <div>
         <h1>{post.title}</h1>
       </div>

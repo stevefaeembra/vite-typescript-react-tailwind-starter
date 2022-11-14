@@ -10,7 +10,7 @@ import { BlogPostSchema, IBlogPost } from './blogpost.interface';
 
 interface IBlogPostForm {
   post: IBlogPost;
-  mutator: () => void;
+  mutator: (post: IBlogPost) => void;
 }
 
 const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
@@ -37,7 +37,7 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
   };
 
   return (
-    <form className="m-4 flex flex-col md:container md:mx-auto" onSubmit={handleSubmit(onSubmit)}>
+    <form className={STYLES.centered} onSubmit={handleSubmit(onSubmit)}>
       <>
         <label htmlFor="title">Blog title</label>
         <input

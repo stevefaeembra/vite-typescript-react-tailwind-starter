@@ -19,7 +19,7 @@ const App: FC = (): ReactElement => {
     <div className="flex min-h-screen flex-col">
       <Header />
 
-      <main className="grid grow place-items-center">
+      <main className="container mx-auto grid grow">
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route element={<BlogList />} path="/" />
