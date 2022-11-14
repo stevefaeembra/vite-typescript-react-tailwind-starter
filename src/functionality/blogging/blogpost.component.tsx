@@ -20,16 +20,16 @@ const BlogPost: React.FC = (): ReactElement => {
   }
   return (
     <div className={STYLES.centered}>
-      <div>
+      <div className={STYLES.padding}>
         <h1>{post.title}</h1>
       </div>
-      <div>
+      <div className={STYLES.padding}>
         <h2>by {post.author}</h2>
       </div>
-      <div>
+      <div className={STYLES.padding}>
         <h3>{post.text}</h3>
       </div>
-      <button className={STYLES.primary} onClick={() => navigate('/')}>
+      <button className={`${STYLES.primary} ${STYLES.padding}`} onClick={() => navigate('/')}>
         Go Back
       </button>
     </div>

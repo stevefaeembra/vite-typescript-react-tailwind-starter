@@ -6,7 +6,13 @@ const STYLES = {
   secondary:
     'inline-block rounded bg-gray-200 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-gray-700 shadow-md transition duration-150 ease-in-out hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg',
   ruler: 'block border-1 border-black my-3',
+  link: 'underline decoration-solid',
   centered: 'container mx-auto w-1/2 grow p-4',
+  padding: 'p-2 m-2',
+  enabled:
+    'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0',
+  disabled:
+    'form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-gray-100 bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none',
 };
 
 export default STYLES;

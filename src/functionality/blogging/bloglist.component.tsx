@@ -18,7 +18,7 @@ const BlogList: FC = (): ReactElement => {
   }
 
   if (isLoading) {
-    return <h1>{t('loading')}</h1>;
+    return <h1 className={STYLES.centered}>{t('loading')}</h1>;
   }
 
   if (isError) {
@@ -30,7 +30,7 @@ const BlogList: FC = (): ReactElement => {
       {data.map((post: IBlogPost) => (
         <div key={post.id}>
           <Link to={`/blogs/${post.id}`}>
-            <h1>{post.title}</h1>
+            <h1 className={STYLES.link}>{post.title}</h1>
           </Link>
           <div>
             by {post.author}, {post.postdate}
