@@ -43,7 +43,12 @@ export const getBlogs = (): IBlogPost[] => BLOGS;
 export const getPost = (id: string): IBlogPost | undefined => BLOGS.find(post => post.id === id);
 
 export const addPost = (post: IBlogPost) => {
-  const nextId = (BLOGS.length + 1).toString();
+  // originally used length of list+1, but gave subtle bug when we delete
+  // items and add new ones.
+  // instead, find maximum id and add 1 to that.
+  const numericIds = BLOGS.map(post => parseInt(post.id));
+  const maxId = Math.max(...numericIds);
+  const nextId = (maxId + 1).toString();
   const newpost = { ...post, id: nextId };
   BLOGS.push(newpost);
   return BLOGS;
