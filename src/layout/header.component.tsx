@@ -17,7 +17,7 @@ const Header: FC = (): ReactElement => {
       </h1>
       <nav>
         <Link to="/blogs">
-          <button className={STYLES.primary}>Add new post</button>
+          <button className={STYLES.primary}>{t('create')}</button>
         </Link>
       </nav>
       <span className="flex items-center justify-between">

@@ -1,3 +1,14 @@
 {
-  "greeting": "Bonjour"
+  "greeting": "Bonjour",
+  "loading": "Récupération de données",
+  "create": "Écrire un nouvel article",
+  "delete": "Effacer",
+  "edit": "Éditer",
+  "save": "Enregister",
+  "goback": "Retour",
+  "title": "Titre",
+  "author": "Auteur",
+  "date": "Date de modification",
+  "article": "Article",
+  "cancel": "Annuler"
 }

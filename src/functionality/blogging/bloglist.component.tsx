@@ -1,5 +1,6 @@
 import { FC, ReactElement } from 'react';
 
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import STYLES from '../../theme/styling-classes';
@@ -10,13 +11,14 @@ import usePosts from './usePosts';
 const BlogList: FC = (): ReactElement => {
   const { isLoading, isError, data, error } = usePosts();
   const { mutate: deleteMutate } = useDeletePost();
+  const { t } = useTranslation();
 
   if (data) {
     data.sort((a: IBlogPost, b: IBlogPost) => new Date(a.postdate).valueOf() - new Date(b.postdate).valueOf());
   }
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <h1>{t('loading')}</h1>;
   }
 
   if (isError) {
@@ -35,10 +37,10 @@ const BlogList: FC = (): ReactElement => {
           </div>
           <div>
             <button className={STYLES.danger} onClick={() => deleteMutate(post.id)}>
-              Delete
+              {t('delete')}
             </button>{' '}
             <Link to={`/edit/${post.id}`}>
-              <button className={STYLES.primary}>Edit</button>
+              <button className={STYLES.primary}>{t('edit')}</button>
             </Link>
           </div>
           <hr className={STYLES.ruler} />

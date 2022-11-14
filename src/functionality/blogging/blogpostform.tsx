@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 // TODO: find out why '~/...' paths not working, only relative ones work
 import FieldError from '../../components/error.component';
@@ -15,6 +17,7 @@ interface IBlogPostForm {
 
 const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
   const formData = post;
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -39,7 +42,7 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
   return (
     <form className={STYLES.centered} onSubmit={handleSubmit(onSubmit)}>
       <>
-        <label htmlFor="title">Blog title</label>
+        <label htmlFor="title">{t('title')}</label>
         <input
           className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
           id="title"
@@ -49,7 +52,7 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
       </>
       <div>
         <>
-          <label htmlFor="author">Author</label>
+          <label htmlFor="author">{t('author')}</label>
           <input
             className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             disabled={true}
@@ -61,7 +64,7 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
       </div>
       <div>
         <>
-          <label htmlFor="postdate">Date Posted</label>
+          <label htmlFor="postdate">{t('date')}</label>
           <input
             className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             disabled={true}
@@ -74,7 +77,7 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
       </div>
       <div>
         <>
-          <label htmlFor="text">Article</label>
+          <label htmlFor="text">{t('article')}</label>
           <textarea
             className="w-full appearance-none rounded border-2 border-gray-200 bg-gray-200 py-2 px-4 leading-tight text-gray-700 focus:border-purple-500 focus:bg-white focus:outline-none"
             cols={80}
@@ -85,8 +88,18 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
           {errors.text && <FieldError message={'Article is a Required field'} />}
         </>
       </div>
+
+      <Link to="/">
+        <button
+          aria-label="Add Item"
+          className="inline-block rounded bg-gray-200 px-6 py-2.5 text-xs font-medium uppercase leading-tight text-gray-700 shadow-md transition duration-150 ease-in-out hover:bg-gray-300 hover:shadow-lg focus:bg-gray-300 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-400 active:shadow-lg"
+        >
+          {t('cancel')}
+          {''}
+        </button>
+      </Link>
       <button aria-label="Add Item" className={STYLES.primary} type="submit">
-        Save Post
+        {t('save')}
       </button>
     </form>
   );

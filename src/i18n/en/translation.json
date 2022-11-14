@@ -1,3 +1,14 @@
 {
-  "greeting": "Hello"
+  "greeting": "Hello",
+  "loading": "Loading...",
+  "create": "Add new post",
+  "delete": "Delete",
+  "edit": "Edit",
+  "save": "Save post",
+  "goback": "Go back",
+  "title": "Title",
+  "author": "Author",
+  "date": "Date",
+  "article": "Article Body",
+  "cancel": "Cancel"
 }
