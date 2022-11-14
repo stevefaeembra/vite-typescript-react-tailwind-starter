@@ -24,11 +24,8 @@ const BlogPostForm: FC = ({ post, mutator }) => {
   });
 
   const onSubmit = (data: IBlogPost) => {
-    // console.log('data', data);
-    // console.log('formData', formData);
+    // Id is not a field on the form so need to spread it in with the updated post fields
     const submitForm = { ...data, id: formData.id };
-    console.log('submitting', JSON.stringify(submitForm));
-    // Id is not a field on the form so need to spread it in
     mutator(submitForm);
   };
 

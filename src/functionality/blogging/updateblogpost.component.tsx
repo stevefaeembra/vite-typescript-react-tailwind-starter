@@ -12,7 +12,7 @@ const UpdateBlogPostForm: FC = () => {
   const { isLoading, isError, data: existingPost, error } = usePost(id);
 
   const navigate = useNavigate();
-  const { mutate: updateMutate } = useUpdatePost(() => navigate('/'));
+  const { mutate: updateMutate } = useUpdatePost(existingPost, () => navigate('/'));
 
   if (isLoading) {
     return <h1>Loading...</h1>;
