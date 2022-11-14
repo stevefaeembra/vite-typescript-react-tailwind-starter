@@ -25,6 +25,7 @@ const BlogPost: React.FC = (): ReactElement => {
       </div>
       <div className={STYLES.padding}>
         <h2>by {post.author}</h2>
+        <h3>{post.postdate}</h3>
       </div>
       <div className={STYLES.padding}>
         <h3>{post.text}</h3>

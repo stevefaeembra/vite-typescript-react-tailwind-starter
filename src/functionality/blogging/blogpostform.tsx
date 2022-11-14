@@ -42,20 +42,26 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
   return (
     <form className={STYLES.centered} onSubmit={handleSubmit(onSubmit)}>
       <>
-        <label htmlFor="title">{t('title')}</label>
+        <label className={STYLES.bold} htmlFor="title">
+          {t('title')}
+        </label>
         <input className={STYLES.enabled} id="title" {...register('title')}></input>
         {errors.title && <FieldError message={'Title is a Required field'} />}
       </>
       <div>
         <>
-          <label htmlFor="author">{t('author')}</label>
+          <label className={STYLES.bold} htmlFor="author">
+            {t('author')}
+          </label>
           <input className={STYLES.disabled} disabled={true} id="author" {...register('author')}></input>
           {errors.author && <FieldError message={'Author is a Required field'} />}
         </>
       </div>
       <div>
         <>
-          <label htmlFor="postdate">{t('date')}</label>
+          <label className={STYLES.bold} htmlFor="postdate">
+            {t('date')}
+          </label>
           <input
             className={STYLES.disabled}
             disabled={true}
@@ -68,7 +74,9 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
       </div>
       <div>
         <>
-          <label htmlFor="text">{t('article')}</label>
+          <label className={STYLES.bold} htmlFor="text">
+            {t('article')}
+          </label>
           <textarea className={STYLES.enabled} cols={80} id="text" rows={15} {...register('text')}></textarea>
           {errors.text && <FieldError message={'Article is a Required field'} />}
         </>

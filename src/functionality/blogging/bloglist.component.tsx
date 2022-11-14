@@ -35,14 +35,16 @@ const BlogList: FC = (): ReactElement => {
           <div>
             by {post.author}, {post.postdate}
           </div>
-          <div>
-            <button className={STYLES.danger} onClick={() => deleteMutate(post.id)}>
-              {t('delete')}
-            </button>{' '}
-            <Link to={`/edit/${post.id}`}>
-              <button className={STYLES.primary}>{t('edit')}</button>
-            </Link>
-          </div>
+          {post.author === 'steven' ? (
+            <div>
+              <button className={STYLES.danger} onClick={() => deleteMutate(post.id)}>
+                {t('delete')}
+              </button>{' '}
+              <Link to={`/edit/${post.id}`}>
+                <button className={STYLES.primary}>{t('edit')}</button>
+              </Link>
+            </div>
+          ) : null}
           <hr className={STYLES.ruler} />
         </div>
       ))}
