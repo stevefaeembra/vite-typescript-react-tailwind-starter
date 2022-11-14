@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
+import STYLES from '../../theme/styling-classes';
 import usePost from './usePost';
 
 const BlogPost: React.FC = (): ReactElement => {
@@ -28,7 +29,7 @@ const BlogPost: React.FC = (): ReactElement => {
       <div>
         <h3>{post.text}</h3>
       </div>
-      <button className="button" onClick={() => navigate('/')}>
+      <button className={STYLES.primary} onClick={() => navigate('/')}>
         Go Back
       </button>
     </div>

@@ -2,6 +2,7 @@ import { FC, ReactElement } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import STYLES from '../../theme/styling-classes';
 import { IBlogPost } from './blogpost.interface';
 import useDeletePost from './useDeletePost';
 import usePosts from './usePosts';
@@ -12,8 +13,7 @@ const BlogList: FC = (): ReactElement => {
 
   if (data) {
     data.sort((a: IBlogPost, b: IBlogPost) => {
-      //TODO : find why sorting not working
-      new Date(a.postdate).valueOf() - new Date(b.postdate).valueOf();
+      return new Date(a.postdate).valueOf() - new Date(b.postdate).valueOf();
     });
   }
 
@@ -36,8 +36,14 @@ const BlogList: FC = (): ReactElement => {
             by {post.author}, {post.postdate}
           </div>
           <div>
-            <button onClick={() => deleteMutate(post.id)}>Delete</button> | <Link to={`/edit/${post.id}`}>Edit</Link>
+            <button className={STYLES.danger} onClick={() => deleteMutate(post.id)}>
+              Delete
+            </button>{' '}
+            <Link to={`/edit/${post.id}`}>
+              <button className={STYLES.primary}>Edit</button>
+            </Link>
           </div>
+          <hr className={STYLES.ruler} />
         </div>
       ))}
     </div>

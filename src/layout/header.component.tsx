@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { LanguageSwitcher } from '../i18n/language-switcher.component';
+import STYLES from '../theme/styling-classes';
 import { ThemeSwitcher } from '../theme/theme-switcher.component';
 
 const Header: FC = (): ReactElement => {
@@ -16,7 +17,7 @@ const Header: FC = (): ReactElement => {
       </h1>
       <nav>
         <Link to="/blogs">
-          <button>Add new post</button>
+          <button className={STYLES.primary}>Add new post</button>
         </Link>
       </nav>
       <span className="flex items-center justify-between">

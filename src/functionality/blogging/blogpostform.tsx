@@ -3,10 +3,17 @@ import React, { FC } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
+// TODO: find out why '~/...' paths not working, only relative ones work
 import FieldError from '../../components/error.component';
+import STYLES from '../../theme/styling-classes';
 import { BlogPostSchema, IBlogPost } from './blogpost.interface';
 
-const BlogPostForm: FC = ({ post, mutator }) => {
+interface IBlogPostForm {
+  post: IBlogPost;
+  mutator: () => void;
+}
+
+const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
   const formData = post;
   const {
     register,
@@ -29,7 +36,6 @@ const BlogPostForm: FC = ({ post, mutator }) => {
     mutator(submitForm);
   };
 
-  // TODO: the following is a copy and paste job, break into separate component?
   return (
     <form className="m-4 flex flex-col md:container md:mx-auto" onSubmit={handleSubmit(onSubmit)}>
       <>
@@ -79,7 +85,7 @@ const BlogPostForm: FC = ({ post, mutator }) => {
           {errors.text && <FieldError message={'Article is a Required field'} />}
         </>
       </div>
-      <button aria-label="Add Item" className="m-2 rounded-md bg-sky-500 p-2 hover:bg-sky-800" type="submit">
+      <button aria-label="Add Item" className={STYLES.primary} type="submit">
         Save Post
       </button>
     </form>
