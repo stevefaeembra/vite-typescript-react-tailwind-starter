@@ -83,7 +83,7 @@ const BlogPostForm: FC<IBlogPostForm> = ({ post, mutator }) => {
       </div>
 
       <Link to="/">
-        <button aria-label="Cancel" className={`${STYLES.secondary} ${STYLES.padding}`}>
+        <button aria-label="Cancel" className={`${STYLES.danger} ${STYLES.padding}`}>
           {t('cancel')}
         </button>
       </Link>
